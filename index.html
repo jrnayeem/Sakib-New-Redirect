@@ -29,8 +29,17 @@
     }, 1000);
 
     function myFunction() {
-      var url = "https://www.youtube.com/redirect?event=comments&redir_token=QUFFLUhqbHZabGQwR2c0SmFvcC16OUdwWVd0UVhaTTIxQXxBQ3Jtc0ttU2x5alpsWHRaYmVKajAyR3VEbHE3eUY2emdQSVRWOXVQRG1iSThSZmZTQ0dCdlUzU2wtY0pQa0hxOWROUm9nTzhuSFRzb0hOWlRYeTJiODd4NWJvOXhfdW10OHRtb3ZRNVJHRzZ5VHdJckJId1lFbw&q=https%3A%2F%2Fv.ht%2FPpyeQ&html_redirect=1";
-      window.location.href = url;
+      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbHZabGQwR2c0SmFvcC16OUdwWVd0UVhaTTIxQXxBQ3Jtc0ttU2x5alpsWHRaYmVKajAyR3VEbHE3eUY2emdQSVRWOXVQRG1iSThSZmZTQ0dCdlUzU2wtY0pQa0hxOWROUm9nTzhuSFRzb0hOWlRYeTJiODd4NWJvOXhfdW10OHRtb3ZRNVJHRzZ5VHdJckJId1lFbw&q=https%3A%2F%2Fv.ht%2FPpyeQ&html_redirect=1";
+      var desktopFallback = "https://v.ht/PpyeQ";
+
+      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = app;
+        window.setTimeout(function() {
+          window.location.href = mobileFallback;
+        }, 25);
+      } else {
+        window.location.href = desktopFallback;
+      }
 
       function killPopup() {
         window.removeEventListener('pagehide', killPopup);
