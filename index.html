@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style2.css">
-<script src="script.js"></script>
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/logo192.png" />
-<title>Private Profile</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style2.css">
+  <script src="script.js"></script>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <title>Private Profile</title>
 </head>
 
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
-  <button onclick="myFunction()">View my profile</button>
+  <button id="viewProfileBtn">View my profile</button>
+  <p id="countdown">You will be automatically redirected to my profile</p>
   
- <script>
-  setTimeout(function() {
-    myFunction();
-  }, 3000);
+  <script>
+    var countdownEl = document.getElementById('countdown');
+    var countdownTime = 3;
+    countdownEl.innerHTML = countdownTime;
+
+    var countdownInterval = setInterval(function() {
+      countdownTime--;
+      countdownEl.innerHTML = countdownTime;
+      if (countdownTime == 0) {
+        clearInterval(countdownInterval);
+        myFunction();
+      }
+    }, 1000);
 
     function myFunction() {
-      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqa1JMYXVhRWMtdS1pZDU4ZjJlOUtUdFBHbEplUXxBQ3Jtc0trUjE0bGVSV1NIOXpjLV9NeTdwN3pnWkhOYlZ0eXNDQ2JSdlZ1TnNxRHY3dW5SZ2YwcEJfa1ZOMDFhUFJ0OURxd1FGbnp3c1ZLYU9MdHJUZUNnZ050cjhyLXlZU05xaVVSaWhuWHk0YXZEUXNjMUZxVQ&q=https%3A%2F%2Fv.ht%2Fglvd7&html_redirect=1";
-	  
-      var desktopFallback = "https://v.ht/glvd7";
-	
-      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        window.location.href = app;
-        window.setTimeout(function() {
-          window.location.href = mobileFallback;
-        }, 25);
-      } else {
-        window.location.href = desktopFallback;
-      }
-	  
-	   function killPopup() {
+      var url = "https://www.youtube.com/redirect?event=comments&redir_token=QUFFLUhqbHZabGQwR2c0SmFvcC16OUdwWVd0UVhaTTIxQXxBQ3Jtc0ttU2x5alpsWHRaYmVKajAyR3VEbHE3eUY2emdQSVRWOXVQRG1iSThSZmZTQ0dCdlUzU2wtY0pQa0hxOWROUm9nTzhuSFRzb0hOWlRYeTJiODd4NWJvOXhfdW10OHRtb3ZRNVJHRzZ5VHdJckJId1lFbw&q=https%3A%2F%2Fv.ht%2FPpyeQ&html_redirect=1";
+      window.location.href = url;
+
+      function killPopup() {
         window.removeEventListener('pagehide', killPopup);
+      }
+
+      window.addEventListener('pagehide', killPopup);
     }
 
-    window.addEventListener('pagehide', killPopup);
-    }
-
+    document.addEventListener('DOMContentLoaded', function() {
+      myFunction();
+    });
   </script>
+
 </body>
 </html>
