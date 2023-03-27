@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style2.css">
-  <script src="script.js"></script>
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/logo192.png" />
-  <title>Private Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style2.css">
+<script src="script.js"></script>
+<link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/logo192.png" />
+<title>Private Profile</title>
+
 </head>
 
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
-  <button id="viewProfileBtn">View my profile</button>
-  <p id="countdown">You will be automatically redirected to my profile</p>
-  
-  <script>
-    var countdownEl = document.getElementById('countdown');
-    var countdownTime = 3;
+  <button onclick="myFunction()">View my profile</button>
+  <p>You will be automatically redirected to my profile</p>
+  <p id="countdown"></p>
+
+ <script>
+   var countdownEl = document.getElementById('countdown');
+  var countdownTime = 3;
+  countdownEl.innerHTML = countdownTime;
+
+  var countdownInterval = setInterval(function() {
+    countdownTime--;
     countdownEl.innerHTML = countdownTime;
-
-    var countdownInterval = setInterval(function() {
-      countdownTime--;
-      countdownEl.innerHTML = countdownTime;
-      if (countdownTime == 0) {
-        clearInterval(countdownInterval);
-        myFunction();
-      }
-    }, 1000);
-
+    if (countdownTime == 0) {
+      clearInterval(countdownInterval);
+      myFunction();
+    }
+  }, 1000);
+	  
     function myFunction() {
       var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqa1F6MlYxbTJCSHYxeElhSmpTNld5dElvUUZWd3xBQ3Jtc0ttWlBPSGFwai1WU0c2TnpYQjJtYkNSU1hTcEpIX0FEcG4tQ3Vrd052OTJjUDFRTFZpaGg3WUlRUHNqaEZiZWFmS0toWGdnN29INHMzaHAtMzhISFdzVFpNMTNHVm5YUWU0X3R5a0V0eVRvdUEzMGZfWQ&q=https%3A%2F%2Fv.ht%2FE05n1&html_redirect=1";
-      var desktopFallback = "https://v.ht/E05n1";
-
+	
       if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         window.location.href = app;
         window.setTimeout(function() {
@@ -40,18 +41,14 @@
       } else {
         window.location.href = desktopFallback;
       }
-
-      function killPopup() {
+	  
+	   function killPopup() {
         window.removeEventListener('pagehide', killPopup);
-      }
-
-      window.addEventListener('pagehide', killPopup);
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      myFunction();
-    });
-  </script>
+    window.addEventListener('pagehide', killPopup);
+    }
 
+</script>
 </body>
 </html>
